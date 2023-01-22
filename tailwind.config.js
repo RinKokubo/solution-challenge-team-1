@@ -8,7 +8,7 @@ module.exports = {
     screens: {
       'sp': '0px',
       'desktop': '897px'
-  },
+    },
   },
   plugins: [],
 }
