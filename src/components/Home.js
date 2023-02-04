@@ -13,15 +13,17 @@ const center = {
 
 const Home = () => {
   return (
-    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAP_API}>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}>
-          { /* Child components, such as markers, info windows, etc. */ }
-          <></>
-      </GoogleMap>
-    </LoadScript>
+    <div className='bg-[#4ed1a3] px-[15px] py-[25px] flex justify-center items-center min-h-screen'>
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAP_API}>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={10}>
+            { /* Child components, such as markers, info windows, etc. */ }
+            <></>
+        </GoogleMap>
+      </LoadScript>
+    </div>
   )
 }
 
