@@ -13,7 +13,8 @@ const center = {
 
 const Home = () => {
   return (
-    <div className='bg-[#4ed1a3] px-[15px] py-[25px] flex justify-center items-center min-h-screen'>
+    <div className='bg-[#4ed1a3] px-[15px] py-[25px] flex flex-col justify-center items-center min-h-screen'>
+      <h1 className='text-white text-[20px] w-[100%]'>MAP</h1>
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAP_API}>
         <GoogleMap
           mapContainerStyle={containerStyle}
