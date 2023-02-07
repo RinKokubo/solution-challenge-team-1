@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -6,12 +6,12 @@ const containerStyle = {
   height: '400px'
 };
 
-const center = {
-  lat: -3.745,
-  lng: -38.523
-};
-
 const Home = () => {
+  const [center,setCenter] = useState({lat: 0, lng: 0});
+  navigator.geolocation.getCurrentPosition((position) => {
+    setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
+    console.log(center);
+  });
   return (
     <LoadScript googleMapsApiKey="AIzaSyCeNQPZSNTDWlBeTcZwsjjuBPYa2hBURMM">
       <GoogleMap
