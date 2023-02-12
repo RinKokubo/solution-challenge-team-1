@@ -7,6 +7,8 @@ function App() {
     <Router>
       <Routes>
         <Route path='/map' element={<Home />}></Route>
+        <Route path='/sign_in' element={<Sign_in />}></Route>
+        <Route path='/sign_in/confirm' element={<Confirm />}></Route>
       </Routes>
     </Router>
   );
