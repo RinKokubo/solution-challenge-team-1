@@ -1,7 +1,7 @@
-const SignIn = () => {
+const CreateAccount = () => {
   return (
     <p>hi</p>
   )
 }
 
-export default SignIn
+export default CreateAccount
