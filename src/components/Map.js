@@ -11,7 +11,7 @@ const center = {
   lng: -38.523
 };
 
-const Home = () => {
+const Map = () => {
   return (
     <div className='bg-[#4ed1a3] px-[15px] py-[25px] flex flex-col justify-center items-center min-h-screen'>
       <h1 className='text-white text-[20px] w-[100%]'>MAP</h1>
@@ -28,4 +28,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Map
