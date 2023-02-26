@@ -1,3 +1,9 @@
+// 起動画面
+// className = CSS
+// bg-[#4ed1a3] これは、bg=バックグラウンド　つまり背景の色が#4ed1a3
+// text-white これは、文字の色が白
+// 詳しくは、https://tailwindcss.com/docs/flex-basis で検索
+
 const Start = () => {
   return (
     <div className="bg-[#4ed1a3] min-h-screen flex flex-col items-center relative">
