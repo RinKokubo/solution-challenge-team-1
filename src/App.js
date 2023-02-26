@@ -5,6 +5,7 @@ import SignIn from './components/CreateAccount';
 import CreateAccount from './components/CreateAccount';
 import Confirm from './components/Confirm';
 import Start from './components/Start';
+import SignIn from './components/SignIn';
 
 function App() {
   return (
