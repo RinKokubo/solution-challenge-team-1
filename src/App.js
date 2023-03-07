@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Map from './components/Map';
+import SignIn from './components/CreateAccount';
 import CreateAccount from './components/CreateAccount';
 import Confirm from './components/Confirm';
 import Start from './components/Start';
@@ -13,8 +14,8 @@ function App() {
         <Route path='/' element={<Start />}></Route>
         <Route path='/map' element={<Map />}></Route>
         <Route path='/sign_in' element={<SignIn />}></Route>
-        <Route path='/sign_up' element={<CreateAccount />}></Route>
-        <Route path='/sign_up/confirm' element={<Confirm />}></Route>
+        <Route path='/create_account' element={<CreateAccount />}></Route>
+        <Route path='/create_account/confirm' element={<Confirm />}></Route>
       </Routes>
     </Router>
   );
