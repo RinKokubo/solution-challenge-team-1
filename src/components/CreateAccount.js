@@ -16,7 +16,7 @@ const CreateAccount = () => {
     event.preventDefault();
     const { email, password } = event.target.elements;
     console.log(email.value, password.value);
-    navigate('/sign_up/confirm', {state: {email: email.value, password: password.value}});
+    navigate('/create_account/confirm', {state: {email: email.value, password: password.value}});
   };
 
   return (
