@@ -26,19 +26,22 @@ const SignIn = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control name= "email" type="email" placeholder="Enter email" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control name= "password" type="password" placeholder="Password" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+    <div className="bg-[#4ed1a3]">
+      <h1 className="text-white">Sign in</h1>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label className="text-white">Mail</Form.Label>
+              <Form.Control name= "email" type="email" placeholder="Enter email" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label className="text-white">Password</Form.Label>
+              <Form.Control name= "password" type="password" placeholder="Password" />
+            </Form.Group>
+            <Button variant="light" type="submit">
+              Submit
+            </Button>
+          </Form>
+    </div>
   )
 }
 
