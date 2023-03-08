@@ -1,3 +1,6 @@
+// px, py => パディング  mx, my -> マージン
+// min-h-screen 画面の最小幅をスクリーンのサイズにする
+
 import React from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
