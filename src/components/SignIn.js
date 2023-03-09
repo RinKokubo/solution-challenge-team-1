@@ -26,21 +26,25 @@ const SignIn = () => {
   };
 
   return (
-    <div className="bg-[#4ed1a3]">
-      <h1 className="text-white">Sign in</h1>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label className="text-white">Mail</Form.Label>
-              <Form.Control name= "email" type="email" placeholder="Enter email" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label className="text-white">Password</Form.Label>
-              <Form.Control name= "password" type="password" placeholder="Password" />
-            </Form.Group>
-            <Button variant="light" type="submit">
-              Submit
-            </Button>
-          </Form>
+    <div className="bg-[#4ed1a3] justify-center min-h-screen">
+      <div className="container">
+        <h1 className="text-white">Sign in</h1>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label className="text-white">Mail</Form.Label>
+                <Form.Control name= "email" type="email" placeholder="Enter email" />
+              </Form.Group>
+              <Form.Group className="mb-4" controlId="formBasicPassword">
+                <Form.Label className="text-white">Password</Form.Label>
+                <Form.Control name= "password" type="password" placeholder="Password" />
+              </Form.Group>
+              <div className="col-md-12 text-center">
+                <Button variant="light col-md-4" type="submit">
+                  Sign in
+                </Button>
+              </div>
+            </Form>
+      </div>    
     </div>
   )
 }
