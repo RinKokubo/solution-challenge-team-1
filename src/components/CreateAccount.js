@@ -3,10 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.css';
 import { auth } from '../firebase';
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const CreateAccount = () => {
 
@@ -14,13 +11,14 @@ const CreateAccount = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { email, password } = event.target.elements;
+    const { name, email, password, age, sex } = event.target.elements;
     console.log(email.value, password.value);
-    navigate('/create_account/confirm', {state: {email: email.value, password: password.value}});
+    navigate('/create_account/confirm', {state: {name:name.value, email:email.value, password:password.value, age:age.value, sex:sex.value}});
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} className="p-10 bg-[#4ed1a3] min-h-screen">
+      <h1>Create an Account</h1>
       <Form.Group className="mb-3" controlId="formName">
         <Form.Label>Name</Form.Label>
         <Form.Control name= "name" type="text" placeholder="" />
@@ -39,19 +37,21 @@ const CreateAccount = () => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formSex">
         <Form.Label>Sex</Form.Label>
-        <DropdownButton id="sex" title="Sex">
-          <Dropdown.Item href="#/action-1">Male</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Female</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Ohter</Dropdown.Item>
-        </DropdownButton>
+        <Form.Select name="sex" aria-label="Default select example">
+          <option></option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </Form.Select>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formCountry">
-        <Form.Label>Country</Form.Label>
-        <Form.Control name= "country" type="text" placeholder="" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <div className="d-grid gap-2">
+        <Button variant="primary" size="lg" type="submit">
+          Conform
+        </Button>
+        <Button variant="secondary" size="lg" onClick={()=> navigate(-1)}>
+          Back
+        </Button>
+      </div>
     </Form>
   )
 }
