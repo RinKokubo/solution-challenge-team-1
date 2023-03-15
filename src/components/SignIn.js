@@ -26,14 +26,14 @@ const SignIn = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="p-10 bg-[#4ed1a3] min-h-screen">
-      <h1>Sign In</h1>
+    <Form onSubmit={handleSubmit} className="p-10 bg-[#4ed1a3] justify-center min-h-screen">
+      <h1 className="text-white">Sign In</h1>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label className="text-white">Email address</Form.Label>
         <Form.Control name= "email" type="email" placeholder="Enter email" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label className="text-white">Password</Form.Label>
         <Form.Control name= "password" type="password" placeholder="Password" />
       </Form.Group>
       <div className="d-grid gap-2">
