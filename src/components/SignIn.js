@@ -26,7 +26,8 @@ const SignIn = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="p-10 bg-[#4ed1a3] min-h-screen">
+      <h1>Sign In</h1>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control name= "email" type="email" placeholder="Enter email" />
@@ -35,9 +36,14 @@ const SignIn = () => {
         <Form.Label>Password</Form.Label>
         <Form.Control name= "password" type="password" placeholder="Password" />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <div className="d-grid gap-2">
+        <Button variant="primary" size="lg" type="submit">
+          Sign in
+        </Button>
+        <Button variant="secondary" size="lg" onClick={()=> navigate(-1)}>
+          Back
+        </Button>
+      </div>
     </Form>
   )
 }
