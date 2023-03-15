@@ -65,7 +65,7 @@ const Map = () => {
 
   return (
     <div className='bg-[#4ed1a3] px-[15px] py-[25px] flex flex-col justify-center items-center min-h-screen'>
-      <h1 className='text-white text-[30px] w-[80%]'>MAP</h1>
+      <h1 className='text-white text-[30px] w-[80%] mb-[15px]'>MAP</h1>
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAP_API}>
         <GoogleMap
           mapContainerStyle={containerStyle}
