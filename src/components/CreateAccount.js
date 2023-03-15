@@ -11,9 +11,9 @@ const CreateAccount = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { name, email, password, age, sex } = event.target.elements;
+    const { name, email, password, age, gender } = event.target.elements;
     console.log(email.value, password.value);
-    navigate('/create_account/confirm', {state: {name:name.value, email:email.value, password:password.value, age:age.value, sex:sex.value}});
+    navigate('/create_account/confirm', {state: {name:name.value, email:email.value, password:password.value, age:age.value, gender:gender.value}});
   };
 
   return (
@@ -35,9 +35,9 @@ const CreateAccount = () => {
         <Form.Label>Age</Form.Label>
         <Form.Control name= "age" type="text" placeholder="" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formSex">
-        <Form.Label>Sex</Form.Label>
-        <Form.Select name="sex" aria-label="Default select example">
+      <Form.Group className="mb-3" controlId="formGender">
+        <Form.Label>Gender</Form.Label>
+        <Form.Select name="gender" aria-label="Default select example">
           <option></option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>

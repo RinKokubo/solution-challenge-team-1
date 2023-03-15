@@ -13,7 +13,7 @@ const Confirm = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const { name,email,password,age,sex } = location.state;
+  const { name,email,password,age,gender } = location.state;
 
   const createAccount = () => {
     createUserWithEmailAndPassword(auth,email, password)
@@ -23,7 +23,7 @@ const Confirm = () => {
         return addDoc(userCollectionRef, {
           name: name,
           age: age,
-          sex: sex,
+          gender: gender,
         });
       }).then(() => {
         navigate('/sign_in');
@@ -53,8 +53,8 @@ const Confirm = () => {
           <td>{age}</td>
         </tr>
         <tr>
-          <td>Sex</td>
-          <td>{sex}</td>
+          <td>Gender</td>
+          <td>{gender}</td>
         </tr>
       </tbody>
       </Table>
