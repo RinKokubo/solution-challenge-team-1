@@ -8,7 +8,7 @@ import IconPurple from '../images/icon_purple.svg'
 import IconYellow from '../images/icon_yellow.svg'
 
 const containerStyle = {
-  width: '320px',
+  width: '80vw',
   height: '60vh'
 };
 
@@ -24,7 +24,7 @@ const Map = () => {
   // ユーザの位置情報のスタイルを指定
   const myStyles = {
     position: 'absolute',
-    left: '140px',
+    left: '38vw',
     top: '28vh',
     width: '32px',
   };
@@ -65,7 +65,7 @@ const Map = () => {
 
   return (
     <div className='bg-[#4ed1a3] px-[15px] py-[25px] flex flex-col justify-center items-center min-h-screen'>
-      <h1 className='text-white text-[20px] w-[100%]'>MAP</h1>
+      <h1 className='text-white text-[30px] w-[80%]'>MAP</h1>
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAP_API}>
         <GoogleMap
           mapContainerStyle={containerStyle}
