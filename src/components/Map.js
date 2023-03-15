@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { db } from '../firebase';
+import { collection, addDoc } from 'firebase/firestore';
 import MyIcon from '../images/icon_me.svg'
 import IconBlue from '../images/icon_blue.svg'
-import IconGreen from '../images/icon_green.svg'
-import IconPink from '../images/icon_pink.svg'
-import IconPurple from '../images/icon_purple.svg'
-import IconYellow from '../images/icon_yellow.svg'
+///import IconGreen from '../images/icon_green.svg'
+//import IconPink from '../images/icon_pink.svg'
+//import IconPurple from '../images/icon_purple.svg'
+//import IconYellow from '../images/icon_yellow.svg'
 
 const containerStyle = {
   width: '80vw',
@@ -29,14 +31,65 @@ const Map = () => {
     width: '32px',
   };
 
-  // 他のユーザの座標とアイコン
-  const [users, setUsers] = useState([
-    { x: 100, y: 200, src: IconBlue, alt: 'personIcon', age: 30, gender: 'man' },
-    { x: 30, y: 40, src: IconGreen, alt: 'personIcon', age: 26, gender: 'woman' },
-    { x: 50, y: 60, src: IconPink, alt: 'personIcon', age: 8, gender: 'man' },
-    { x: 120, y: 150, src: IconPurple, alt: 'personIcon', age: 57, gender: 'man' },
-    { x: 200, y: 300, src: IconYellow, alt: 'personIcon', age: 92, gender: 'woman' },
-  ]);
+  // ユーザの位置情報を更新して登録
+  const [userLocation,setUserLocation] = useState(null);
+  useEffect(() => {
+    // 3分毎に位置情報を取得するためのタイマーをセットする
+    const timer = setInterval(() => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.log(error);
+        },
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      );
+    }, 180000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    if (userLocation) {
+      const userCollectionRef = collection(db, 'users')
+      return addDoc(userCollectionRef, {
+        latitude: userLocation.latitude,
+        longitude: userLocation.longitude,
+      });
+    }
+  }, [userLocation]);
+
+
+  // 他のユーザの座標を取得する
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    // Firebaseのデータベースから位置情報を取得する
+    const userCollectionRef = collection(db, 'users')
+    userCollectionRef.collection('locations')
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        setUsers({
+          x: data.latitude,
+          y: data.longitude,
+          src: IconBlue,
+          alt: 'user Icon',
+          age: data.age, 
+          gender: data.gender,
+        });
+      }); 
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+}, []);
+  
 
   // アイコンホバー時にユーザの情報を表示する
   const [showInfo, setShowInfo] = useState(false);
