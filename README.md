@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Features
+| User registrations | Register user |
+| Follow function | You could follow and followed |
+| Account Authentication | Authenticate your account |
+| Location Sharing | You could share your location |
+
 ## Available Scripts
 
 In the project directory, you can run:
