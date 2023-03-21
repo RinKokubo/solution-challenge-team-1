@@ -9,6 +9,14 @@
 ## How to start
 
 ## Database
+#### Users  
+|class name|type|limitation|
+|:--|:--|:--|
+|name|string|not null|
+|age|number|not null|
+|sex|string|not null|
+|laitude|number||
+|longitude|number||
 
 ## Directory structure
 <pre>
