@@ -8,9 +8,9 @@
 
 ## How to start
 
-## database
+## Database
 
-## directory structure
+## Directory structure
 <pre>
 .
 ├── public
