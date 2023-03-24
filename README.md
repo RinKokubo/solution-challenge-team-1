@@ -2,7 +2,7 @@
 
 ## Features
 |User registrations|Register user|
-|:|:|
+|:--|:--|
 |Follow function|You could follow and followed|
 |Account Authentication|Authenticate your account|
 |Location Sharing|You could share your location|
