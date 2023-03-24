@@ -1,5 +1,11 @@
 # solution challenge 2023 - Chuo University Team1
 
+## Features
+| User registrations | Register user |
+| Follow function | You could follow and followed |
+| Account Authentication | Authenticate your account |
+| Location Sharing | You could share your location |
+
 ## Development Environments
 * language: HTML, CSS(tailwindCSS), JavaScript
 * framework: React
