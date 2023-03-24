@@ -1,10 +1,13 @@
 # solution challenge 2023 - Chuo University Team1
 
+## Team members
+Yuto Kamezaki, Rio Kobayashi, Karin Yariwake, and Rin Kokubo
+
 ## Location Sharing App
 
 With this app, although anonymous you can see people's location.  This is for emergency such as an earthquake, people can visualize where they are gathered to find a safe place to evacuate.  We made this app focusing on the goal
 
-### SDGs11 Sustainable cities and communities
+## SDGs11 Sustainable cities and communities
 
 **In particular, we focused to limit the damage caused by disasters for the sustainable the cites.**
 
