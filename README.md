@@ -58,7 +58,8 @@ In addition, if you follow other person, you could see the person's location.
 │       ├── SignIn.js
 │       └── Start.js
 │   └── images
-│       ├── icon_blue.svg
+│       ├── app_logo.png
+│       └── icon_blue.svg
 │       └── icon_green.svg
 │       ├── icon_me.svg
 │       └── icon_pink.svg
