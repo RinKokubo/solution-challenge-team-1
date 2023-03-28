@@ -74,6 +74,6 @@ In addition, if you follow other person, you could see the person's location.
 ├── package-lock.json
 ├── package.json
 ├── README.md
-├── tailwind.config.js
+└── tailwind.config.js
 
 </pre>
