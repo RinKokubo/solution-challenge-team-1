@@ -6,8 +6,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db, collection, addDoc } from '../firebase';
 
 const Confirm = () => {
 
@@ -24,6 +23,10 @@ const Confirm = () => {
           name: name,
           age: age,
           gender: gender,
+          email: email,
+          password: password,
+          latitude: 0,
+          longitude: 0
         });
       }).then(() => {
         navigate('/sign_in');

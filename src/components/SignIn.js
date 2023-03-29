@@ -16,7 +16,7 @@ const SignIn = () => {
     console.log(email.value, password.value);
     signInWithEmailAndPassword(auth,email.value, password.value)
       .then((userCredential) => {
-        navigate('/map');
+        navigate('/map', { state: { username: email.value } });
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;

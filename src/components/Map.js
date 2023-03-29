@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { useLocation } from "react-router-dom";
 import MyIcon from '../images/icon_me.svg'
 import IconBlue from '../images/icon_blue.svg'
 import IconGreen from '../images/icon_green.svg'
 import IconPink from '../images/icon_pink.svg'
 import IconPurple from '../images/icon_purple.svg'
 import IconYellow from '../images/icon_yellow.svg'
+import { db, collection, where, query, getDocs, updateDoc } from '../firebase';
 
 const containerStyle = {
   width: '80vw',
@@ -14,12 +16,35 @@ const containerStyle = {
 
 const Map = () => {
 
+  // sign inからユーザ名の受け取り
+  const location = useLocation();
+  const username = location.state?.username || "";
+
   //　マップの中央をユーザの現在地に設定
   const [center,setCenter] = useState({lat: 0, lng: 0});
   navigator.geolocation.getCurrentPosition((position) => {
     setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
-    console.log(center);
+    saveLocationIfMatch(username, position.coords.latitude, position.coords.longitude)
   });
+
+  const userCollectionRef = collection(db, 'users');
+  const saveLocationIfMatch = (username, latitude, longitude) => {
+  // ユーザー名を検索してマッチした場合、位置情報をFirebaseに保存する
+  const queryRef = query(userCollectionRef, where("email", "==", username));
+  getDocs(queryRef)
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        updateDoc(doc.ref, {
+          latitude: latitude,
+          longitude: longitude
+        });
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  };
+  
 
   // ユーザの位置情報のスタイルを指定
   const myStyles = {
@@ -90,6 +115,7 @@ const Map = () => {
               <p>age: {info.age}</p>
             </div>
           )}
+        
         </GoogleMap>
       </LoadScript>
     </div>
