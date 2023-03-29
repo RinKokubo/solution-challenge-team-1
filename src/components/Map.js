@@ -22,9 +22,13 @@ const Map = () => {
 
   //　マップの中央をユーザの現在地に設定
   const [center,setCenter] = useState({lat: 0, lng: 0});
+  let myLatitude = 49;
+  let myLongitude = 5;
   navigator.geolocation.getCurrentPosition((position) => {
     setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
     saveLocationIfMatch(username, position.coords.latitude, position.coords.longitude)
+    myLatitude = position.coords.latitude
+    myLongitude = position.coords.longitude
   });
 
   const userCollectionRef = collection(db, 'users');
@@ -55,13 +59,32 @@ const Map = () => {
   };
 
   // 他のユーザの座標とアイコン
-  const [users, setUsers] = useState([
-    { x: 100, y: 200, src: IconBlue, alt: 'personIcon', age: 30, gender: 'man' },
-    { x: 30, y: 40, src: IconGreen, alt: 'personIcon', age: 26, gender: 'woman' },
-    { x: 50, y: 60, src: IconPink, alt: 'personIcon', age: 8, gender: 'man' },
-    { x: 120, y: 150, src: IconPurple, alt: 'personIcon', age: 57, gender: 'man' },
-    { x: 200, y: 300, src: IconYellow, alt: 'personIcon', age: 92, gender: 'woman' },
-  ]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function getUsers() {
+      const usersRef = collection(db, 'users');
+      const q = query(usersRef);
+      const querySnapshot = await getDocs(q);
+      const userList = [];
+      querySnapshot.forEach((doc) => {
+        const latitude = doc.data().latitude;
+        const longitude = doc.data().longitude;
+        if ((latitude >= myLatitude - 0.1 || latitude <= myLatitude + 0.1) && (longitude >= myLongitude - 0.1 || longitude <= myLongitude + 0.1)) {
+          userList.push({
+            age: doc.data().age,
+            gender: doc.data().gender,
+            latitude: doc.data().latitude - myLatitude,
+            longitude: doc.data().longitude - myLongitude,
+          });
+        }
+      });
+      setUsers(userList);
+    }
+    getUsers();
+  }, [myLatitude, myLongitude]);
+
+
 
   // アイコンホバー時にユーザの情報を表示する
   const [showInfo, setShowInfo] = useState(false);
@@ -97,10 +120,13 @@ const Map = () => {
           center={center}
           zoom={10}>
           <img src={MyIcon} style={myStyles} alt='myIcon'></img>
-          { users.map(({ x, y, src, alt, age, gender }, index) => (
-            <img key={index} src={src} alt={alt} style={{ position: 'absolute', left: x, top: y, width: 32 }} 
+          { users.map(({ latitude, longitude, age, gender }, index) => (
+            <div>
+              <img key={index} src={IconBlue} alt="userIcon" style={{ position: 'absolute', left: `${38 + longitude*10}vw`, top: `${28 + latitude*10}vh`, width: 32 }} 
             onMouseEnter={(e) =>handleMouseEnter(gender, age, e)}
             onMouseLeave={handleMouseLeave} />
+            <p>{latitude}{longitude}</p>
+            </div>
           ))}
           {showInfo && (
             <div style={{
