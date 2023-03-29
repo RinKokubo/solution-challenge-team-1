@@ -3,7 +3,7 @@
 ## Team members
 Yuto Kamezaki, Rio Kobayashi, Karin Yariwake, and Rin Kokubo
 
-## PinPointMe  -- Location Sharing App
+## **PinPointMe**  -- Location Sharing App
 
 With this app, although anonymous you can see people's location.  This is for emergency such as an earthquake, people can visualize where they are gathered to find a safe place to evacuate.  We made this app focusing on the goal
 
@@ -28,6 +28,23 @@ In addition, if you follow other person, you could see the person's location.
 * API: Google Maps API
 
 ## How to start
+
+### set your Google Map API Key
+Generate env file in your local environment and describe the Google Map API Key.
+
+
+**.env**
+<pre>
+REACT_APP_GOOGLE_MAP_API=××××××××××××××××××××××××××
+</pre>
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
 ## Database
 #### Users  
