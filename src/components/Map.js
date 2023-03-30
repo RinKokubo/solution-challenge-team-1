@@ -122,7 +122,7 @@ const Map = () => {
           <img src={MyIcon} style={myStyles} alt='myIcon'></img>
           { users.map(({ latitude, longitude, age, gender }, index) => (
             <div>
-              <img key={index} src={IconBlue} alt="userIcon" style={{ position: 'absolute', left: `${38 + longitude}vw`, top: `${28 + latitude}vh`, width: 32 }} 
+              <img key={index} src={IconBlue} alt="userIcon" style={{ position: 'absolute', left: `${38 + longitude*10}vw`, top: `${28 + latitude*10}vh`, width: 32 }} 
             onMouseEnter={(e) =>handleMouseEnter(gender, age, e)}
             onMouseLeave={handleMouseLeave} />
             <p>{latitude}{longitude}</p>
